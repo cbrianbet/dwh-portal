@@ -10,14 +10,14 @@ if(process.env) {
     url_identity = process.env.REACT_APP_IDENTITY_URL
 } else {
     url = 'https://prod.kenyahmis.org:8082/api/';
-    url_identity = 'https://auth.kenyahmis.org/DwhIdentity/api/';
+    url_identity = 'https://identity.kenyahmis.org/DwhIdentity/api/';
 }
 
 export const getAll = async (endpoint, params) => {
     let request
     if (params) request = axios.get(`${url}${endpoint}`,{ params: params });
     else request = axios.get(`${url}${endpoint}`);
-    
+
     try {
         const response = await request;
         return response.data;

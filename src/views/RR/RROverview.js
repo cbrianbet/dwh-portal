@@ -94,7 +94,7 @@ const RROverview = () => {
             fromDate: filters.fromDate
                 ? filters.fromDate
                 : moment()
-                      .subtract(16, 'days')
+                      .subtract(ETL_DAY, 'days')
                       .format('MMM YYYY'),
         };
         params.period = filters.fromDate
@@ -120,7 +120,7 @@ const RROverview = () => {
             fromDate: filters.fromDate
                 ? filters.fromDate
                 : moment()
-                      .subtract(16, 'days')
+                      .subtract(ETL_DAY, 'days')
                       .format('MMM YYYY'),
         };
         params.period = filters.fromDate
@@ -129,7 +129,7 @@ const RROverview = () => {
                   .add(1, 'month')
                   .format('YYYY,M')
             : moment()
-                  .subtract(16, 'days')
+                  .subtract(ETL_DAY, 'days')
                   .format('YYYY,M');
         const data = await getAll('manifests/emrinfo/' + rrTab, params);
         setInfrastructure({
@@ -149,7 +149,7 @@ const RROverview = () => {
             agency: filters.agencies,
             project: filters.projects,
             fromDate: filters.fromDate || moment()
-                .subtract(16, 'days')
+                .subtract(ETL_DAY, 'days')
                 .format('MMM YYYY'),
         };
         params.period = filters.fromDate
@@ -158,20 +158,20 @@ const RROverview = () => {
                   .add(1, 'month')
                   .format('YYYY,M')
             : moment()
-                  .subtract(16, 'days')
+                  .subtract(ETL_DAY, 'days')
                   .format('YYYY,M');
         params.year = filters.fromDate
                 ? moment(params.fromDate, 'MMM YYYY')
                     .startOf('month')
                     .format('YYYY')
                 : moment()
-                    .subtract(16, 'days')
+                    .subtract(ETL_DAY, 'days')
                     .format('YYYY')
         params.month = filters.fromDate
                 ? moment(params.fromDate, 'MMM YYYY')
                     .format('M')
                 : moment()
-                    .subtract(16, 'days')
+                    .subtract(ETL_DAY, 'days')
                     .format('M')
         const data = await getAll(
             'manifests/implementationDate/' + rrTab,
